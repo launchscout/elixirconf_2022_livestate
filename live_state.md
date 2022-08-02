@@ -21,7 +21,8 @@ LaunchScout
 * Examples
   * Live support
   * Buy button
-  * ??
+  * Comments
+  * Surveys
 
 ---
 
@@ -91,7 +92,7 @@ LaunchScout
 
 # Hot take! 
 ## It isn't javascript that makes client side development terrible
-## It's the complexity on managing requests, responses, and state
+## It's the complexity of managing requests, responses, and distributed state
 
 ---
 
@@ -103,7 +104,7 @@ LaunchScout
   * `init/3` to build initial state
   * `handle_event/3` to handle events
     * returns new state
-    * optionally dispatches client events
+    * optionally returns events to be dispatched on the client side
   * optional: `handle_message` for PubSub
 
 ---
