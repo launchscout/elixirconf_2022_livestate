@@ -95,6 +95,54 @@ LaunchScout
 
 ---
 
+# Let's dig in: `live_state`
+
+* The elixir library
+* `use LiveState.Channel` in yo channel
+* implement
+  * `init/3` to build initial state
+  * `handle_event/3` to handle events
+    * returns new state
+    * optionally dispatches client events
+  * optional: `handle_message` for PubSub
+
+---
+
+# Let's make a `TodoChannel`
+
+---
+
+# Introducing `phx-live-state`
+* javascript (typescript) npm
+* `LiveState` has a lower level API
+* `connectElement()` allows you to "wire up" a Custom Element
+* more ergonomics to come
+
+---
+
+# LiveState
+* `new LiveState(url, channel)`
+* `liveState.connect(params)` connects to socket and joins channel
+* `liveState.subscribe((state) => {})` pass a function which will be called with new state
+* `liveState.pushEvent(new CustomEvent('foo', {detail: ...})`) sends a custom event up to channel using detail as the payload 
+  * `handle_event` will be called on channel to compute new state
+
+---
+
+##  `connectElement(element, liveState, options)`
+* options:
+  * properties - list of properties to set from state
+  * attributes - list of attributes to set from state
+  * events
+    * send - events to send from this element
+    * receive - events to receive and then dispatch on this element
+
+---
+
+# Let's make a Todo Element!
+
+---
+
 # What if all your javascript did was:
 * dispatch events
 * render the current state
@@ -106,6 +154,9 @@ LaunchScout
 ---
 
 # Future possible things
+* Very soon:
+  * jsonpatch for efficient state management
+  * authorization hook and example
 * Other clients
   * Swift/iOS
   * Kotlin/Android
@@ -113,3 +164,9 @@ LaunchScout
 * Connecting to FAAS
 
 ---
+
+# It's early times!
+* APIs may still change
+* It's great time to join us if you want to help them be better :)
+* If you are building an embedded or micro front end app, let's talk
+  * chris@launchscout.com

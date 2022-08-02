@@ -1,11 +1,22 @@
 {
   "name": "elixirconf-2022",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/launchscout/elixirconf_2022_livestate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/launchscout/elixirconf_2022_livestate/issues"
+  },
+  "homepage": "https://github.com/launchscout/elixirconf_2022_livestate#readme",
+  "description": "",
+  "devDependencies": {
+    "@marp-team/marp-cli": "^2.0.4"
+  }
 }
