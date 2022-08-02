@@ -143,13 +143,9 @@ LaunchScout
 
 ---
 
-# What if all your javascript did was:
-* dispatch events
-* render the current state
-
----
-
-# Let's build a thing you guys!
+# More demos
+* [Live comments](https://launchscout.github.io/test-livestate-comments/)
+* Live commerce
 
 ---
 
