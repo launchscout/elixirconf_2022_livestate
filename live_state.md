@@ -12,10 +12,6 @@ LaunchScout
 
 ---
 
-# Who dis?
-
----
-
 # What's an Embedded Application?
 * Adds functionality to a larger application
 * Examples
@@ -87,6 +83,9 @@ LaunchScout
 * No more request/reponse
 * Dispatch events, receive state
   * and possibly other events
+
+---
+
 
 ---
 
