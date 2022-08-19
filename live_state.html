@@ -110,44 +110,99 @@
 </li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12"></section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12">
 <h1>Hot take!</h1>
 <h2>It isn't javascript that makes client side development terrible</h2>
 <h2>It's the complexity of managing requests, responses, and distributed state</h2>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-marpit-fragments="8">
-<h1>Let's dig in: <code>live_state</code></h1>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-marpit-fragments="4">
+<h1>How it works on the Client</h1>
 <ul>
-<li data-marpit-fragment="1">The elixir library</li>
-<li data-marpit-fragment="2"><code>use LiveState.Channel</code> in yo channel</li>
-<li data-marpit-fragment="3">implement
-<ul>
-<li data-marpit-fragment="4"><code>init/3</code> to build initial state</li>
-<li data-marpit-fragment="5"><code>handle_event/3</code> to handle events
-<ul>
-<li data-marpit-fragment="6">returns new state</li>
-<li data-marpit-fragment="7">optionally returns events to be dispatched on the client side</li>
+<li data-marpit-fragment="1">Client library uses Phoenix Channels</li>
+<li data-marpit-fragment="2">Sends Custom Events over channel as <code>lvs:event_name</code></li>
+<li data-marpit-fragment="3">Receives <code>state:change</code> events to update local state</li>
+<li data-marpit-fragment="4">Can optionally receive other events from channel and dispatch them</li>
 </ul>
-</li>
-<li data-marpit-fragment="8">optional: <code>handle_message</code> for PubSub</li>
-</ul>
-</li>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-marpit-fragments="5">
+<h1>How it works on the server</h1>
+<ul>
+<li data-marpit-fragment="1">Server use Phoenix Channels too :)</li>
+<li data-marpit-fragment="2">state is maintained in a socket assign</li>
+<li data-marpit-fragment="3">events are sent from client over the chanel</li>
+<li data-marpit-fragment="4">state changes are pushed to client over the channel</li>
+<li data-marpit-fragment="5">A <code>LiveState.Channel</code> behaviour makes things easy</li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15">
-<h1>Let's make a <code>TodoChannel</code></h1>
+<h2>Mostly, I'm just using Phoenix Channels :)</h2>
+<p>You might be surprised how little code there is...</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-marpit-fragments="4">
+<h1><code>live_state</code></h1>
+<ul>
+<li data-marpit-fragment="1">The elixir library</li>
+<li data-marpit-fragment="2">Add it to your deps</li>
+<li data-marpit-fragment="3"><code>use LiveState.Channel</code> behaviour in yo channel</li>
+<li data-marpit-fragment="4">implement callbacks</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-marpit-fragments="7">
+<h2><code>init/3</code> to build initial state</h2>
+<ul>
+<li data-marpit-fragment="1">Receives:<br />
+*
+<ul>
+<li data-marpit-fragment="2">payload</li>
+<li data-marpit-fragment="3"></li>
+</ul>
+</li>
+<li data-marpit-fragment="4"><code>handle_event/3</code> to handle events<br />
+*
+<ul>
+<li data-marpit-fragment="5">returns new state</li>
+<li data-marpit-fragment="6">optionally returns events to be dispatched on the client side</li>
+</ul>
+</li>
+<li data-marpit-fragment="7">optional: <code>handle_message</code> for PubSub</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18">
+<h1>Let's make a <s>Todo List</s></h1>
+<p>Dear god no lets do something else plz</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-marpit-fragments="4">
+<h1>Let's make something actually interesting: a live support thing</h1>
+<ul>
+<li data-marpit-fragment="1">A custom element that lets visitors chat with an agent</li>
+<li data-marpit-fragment="2">Our &quot;agents&quot; will be in discord</li>
+<li data-marpit-fragment="3">Make a new channel for each convo</li>
+<li data-marpit-fragment="4">Relay messages to and from Discord</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-marpit-fragments="5">
 <h1>Introducing <code>phx-live-state</code></h1>
 <ul>
 <li data-marpit-fragment="1">javascript (typescript) npm</li>
-<li data-marpit-fragment="2"><code>LiveState</code> has a lower level API</li>
-<li data-marpit-fragment="3"><code>connectElement()</code> allows you to &quot;wire up&quot; a Custom Element</li>
-<li data-marpit-fragment="4">more ergonomics to come</li>
+<li data-marpit-fragment="2">increasing levels of abstraction:
+<ul>
+<li data-marpit-fragment="3"><code>LiveState</code> - lower level API</li>
+<li data-marpit-fragment="4"><code>connectElement()</code> allows you to &quot;wire up&quot; a Custom Element</li>
+<li data-marpit-fragment="5"><code>@liveState</code> TS decorator lets you declaratively annotate a Custom Element</li>
+</ul>
+</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-marpit-fragments="5">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-marpit-fragments="3">
+<h1>The goal:</h1>
+<h2>Your TS/JS should only have to:</h2>
+<ul>
+<li data-marpit-fragment="1">declaratively connect to LiveState</li>
+<li data-marpit-fragment="2">render UI</li>
+<li data-marpit-fragment="3">dispatch events</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-marpit-fragments="5">
 <h1>LiveState</h1>
 <ul>
 <li data-marpit-fragment="1"><code>new LiveState(url, channel)</code></li>
@@ -160,7 +215,7 @@
 </li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-marpit-fragments="6">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-marpit-fragments="6">
 <h2><code>connectElement(element, liveState, options)</code></h2>
 <ul>
 <li data-marpit-fragment="1">options:
@@ -177,17 +232,17 @@
 </li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24">
 <h1>Let's make a Todo Element!</h1>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-marpit-fragments="2">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-marpit-fragments="2">
 <h1>More demos</h1>
 <ul>
 <li data-marpit-fragment="1"><a href="https://launchscout.github.io/test-livestate-comments/">Live comments</a></li>
 <li data-marpit-fragment="2">Live commerce</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-marpit-fragments="8">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-marpit-fragments="8">
 <h1>Future possible things</h1>
 <ul>
 <li data-marpit-fragment="1">Very soon:
@@ -206,7 +261,7 @@
 <li data-marpit-fragment="8">Connecting to FAAS</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-marpit-fragments="4">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-marpit-fragments="4">
 <h1>It's early times!</h1>
 <ul>
 <li data-marpit-fragment="1">APIs may still change</li>

@@ -86,37 +86,82 @@ LaunchScout
 
 ---
 
-
----
-
 # Hot take! 
 ## It isn't javascript that makes client side development terrible
 ## It's the complexity of managing requests, responses, and distributed state
 
 ---
 
-# Let's dig in: `live_state`
+# How it works on the Client
+* Client library uses Phoenix Channels
+* Sends Custom Events over channel as `lvs:event_name`
+* Receives `state:change` events to update local state
+* Can optionally receive other events from channel and dispatch them
+
+---
+
+# How it works on the server
+* Server use Phoenix Channels too :)
+* state is maintained in a socket assign
+* events are sent from client over the chanel
+* state changes are pushed to client over the channel
+* A `LiveState.Channel` behaviour makes things easy
+
+---
+
+## Mostly, I'm just using Phoenix Channels :)
+You might be surprised how little code there is...
+
+---
+
+# `live_state`
 
 * The elixir library
-* `use LiveState.Channel` in yo channel
-* implement
-  * `init/3` to build initial state
+* Add it to your deps
+* `use LiveState.Channel` behaviour in yo channel
+* implement callbacks
+
+---
+## `init/3` to build initial state
+  * Receives:
+    * 
+    * payload
+    * 
   * `handle_event/3` to handle events
+    * 
     * returns new state
     * optionally returns events to be dispatched on the client side
   * optional: `handle_message` for PubSub
 
 ---
 
-# Let's make a `TodoChannel`
+# Let's make a ~~Todo List~~
+Dear god no lets do something else plz
+
+---
+
+# Let's make something actually interesting: a live support thing
+* A custom element that lets visitors chat with an agent
+* Our "agents" will be in discord
+* Make a new channel for each convo
+* Relay messages to and from Discord
 
 ---
 
 # Introducing `phx-live-state`
 * javascript (typescript) npm
-* `LiveState` has a lower level API
-* `connectElement()` allows you to "wire up" a Custom Element
-* more ergonomics to come
+* increasing levels of abstraction:
+  * `LiveState` - lower level API
+  * `connectElement()` allows you to "wire up" a Custom Element
+  * `@liveState` TS decorator lets you declaratively annotate a Custom Element
+
+---
+
+# The goal:
+## Your TS/JS should only have to:
+* declaratively connect to LiveState
+* render UI
+* dispatch events
 
 ---
 
