@@ -15,7 +15,7 @@
 <h3>Chris Nelson</h3>
 <p>LaunchScout</p>
 </section>
-</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section data-marpit-advanced-background="pseudo" data-marpit-advanced-background-split="right" style=""></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-marpit-fragments="6">
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section data-marpit-advanced-background="pseudo" data-marpit-advanced-background-split="right" style=""></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-marpit-fragments="7">
 <h1>What's an Embedded Application?</h1>
 <ul>
 <li data-marpit-fragment="1">Adds functionality to a larger application</li>
@@ -27,6 +27,7 @@
 <li data-marpit-fragment="6">Surveys</li>
 </ul>
 </li>
+<li data-marpit-fragment="7">You could also lump in Micro Front Ends</li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-marpit-fragments="3">
@@ -81,24 +82,22 @@
 </li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-marpit-fragments="3">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-marpit-fragments="4">
 <h1>Does this seem familiar?</h1>
 <ul>
 <li data-marpit-fragment="1"><code>GenServer</code></li>
 <li data-marpit-fragment="2">Redux</li>
-<li data-marpit-fragment="3">LiveView</li>
+<li data-marpit-fragment="3">Elm</li>
+<li data-marpit-fragment="4">LiveView</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-marpit-fragments="4">
-<h1>Is there a name for this pattern?</h1>
-<ul>
-<li data-marpit-fragment="1">Event/State Reducers?</li>
-<li data-marpit-fragment="2">Event Driven Thingamajig?</li>
-<li data-marpit-fragment="3">Action Oriented Stuff?</li>
-<li data-marpit-fragment="4">You know, the thing where you have functions that take event and current state and return a new state</li>
-</ul>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10">
+<h1>Side rant: This pattern needs a name!!</h1>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-marpit-fragments="4">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11">
+<h1>Let's call it: Event State Reducer</h1>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-marpit-fragments="4">
 <h1>The new-ish idea</h1>
 <ul>
 <li data-marpit-fragment="1">Taking this pattern multi-tier</li>
@@ -110,12 +109,12 @@
 </li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13">
 <h1>Hot take!</h1>
 <h2>It isn't javascript that makes client side development terrible</h2>
 <h2>It's the complexity of managing requests, responses, and distributed state</h2>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-marpit-fragments="4">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-marpit-fragments="4">
 <h1>How it works on the Client</h1>
 <ul>
 <li data-marpit-fragment="1">Client library uses Phoenix Channels</li>
@@ -124,7 +123,7 @@
 <li data-marpit-fragment="4">Can optionally receive other events from channel and dispatch them</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-marpit-fragments="5">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-marpit-fragments="5">
 <h1>How it works on the server</h1>
 <ul>
 <li data-marpit-fragment="1">Server use Phoenix Channels too :)</li>
@@ -134,11 +133,11 @@
 <li data-marpit-fragment="5">A <code>LiveState.Channel</code> behaviour makes things easy</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16">
 <h2>Mostly, I'm just using Phoenix Channels :)</h2>
 <p>You might be surprised how little code there is...</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-marpit-fragments="4">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-marpit-fragments="4">
 <h1><code>live_state</code></h1>
 <ul>
 <li data-marpit-fragment="1">The elixir library</li>
@@ -147,40 +146,54 @@
 <li data-marpit-fragment="4">implement callbacks</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-marpit-fragments="7">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-marpit-fragments="8">
 <h2><code>init/3</code> to build initial state</h2>
 <ul>
-<li data-marpit-fragment="1">Receives:<br />
-*
+<li data-marpit-fragment="1">Receives:
 <ul>
-<li data-marpit-fragment="2">payload</li>
-<li data-marpit-fragment="3"></li>
+<li data-marpit-fragment="2">chanel</li>
+<li data-marpit-fragment="3">payload</li>
+<li data-marpit-fragment="4">socket</li>
 </ul>
 </li>
-<li data-marpit-fragment="4"><code>handle_event/3</code> to handle events<br />
-*
+<li data-marpit-fragment="5">Returns
 <ul>
-<li data-marpit-fragment="5">returns new state</li>
-<li data-marpit-fragment="6">optionally returns events to be dispatched on the client side</li>
+<li data-marpit-fragment="6">state</li>
+<li data-marpit-fragment="7">map of <code>Jason.Encoder</code> able things</li>
+<li data-marpit-fragment="8">pushes <code>state:change</code> to clients</li>
 </ul>
 </li>
-<li data-marpit-fragment="7">optional: <code>handle_message</code> for PubSub</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18">
-<h1>Let's make a <s>Todo List</s></h1>
-<p>Dear god no lets do something else plz</p>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-marpit-fragments="4">
-<h1>Let's make something actually interesting: a live support thing</h1>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-marpit-fragments="7">
+<h2><code>handle_event/3</code> to handle events</h2>
 <ul>
-<li data-marpit-fragment="1">A custom element that lets visitors chat with an agent</li>
-<li data-marpit-fragment="2">Our &quot;agents&quot; will be in discord</li>
-<li data-marpit-fragment="3">Make a new channel for each convo</li>
-<li data-marpit-fragment="4">Relay messages to and from Discord</li>
+<li data-marpit-fragment="1">Receives
+<ul>
+<li data-marpit-fragment="2">event name (<code>CustomEvent</code> name)</li>
+<li data-marpit-fragment="3">event payload (<code>CustomEvent</code> detail)</li>
+<li data-marpit-fragment="4">state (from socket assigns)</li>
+</ul>
+</li>
+<li data-marpit-fragment="5">Returns<br />
+<code>{:noreply, new_state}</code><br />
+<code>{:reply, event_or_events, new_state}</code></li>
+<li data-marpit-fragment="6">new state is pushed to clients over channel</li>
+<li data-marpit-fragment="7">Events dispatched on client</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-marpit-fragments="5">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20"></section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-marpit-fragments="5">
+<h1>Sending the whole state every time?</h1>
+<ul>
+<li data-marpit-fragment="1"><code>json_patch</code> new in 0.5.1</li>
+<li data-marpit-fragment="2">uses <code>json_diff</code> to calculate state patch</li>
+<li data-marpit-fragment="3">sends a <code>lvs:update</code> event containing a json patch</li>
+<li data-marpit-fragment="4">client applies patch to produce new state</li>
+<li data-marpit-fragment="5">opt in</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-marpit-fragments="5">
 <h1>Introducing <code>phx-live-state</code></h1>
 <ul>
 <li data-marpit-fragment="1">javascript (typescript) npm</li>
@@ -193,7 +206,7 @@
 </li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-marpit-fragments="3">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-marpit-fragments="3">
 <h1>The goal:</h1>
 <h2>Your TS/JS should only have to:</h2>
 <ul>
@@ -202,7 +215,7 @@
 <li data-marpit-fragment="3">dispatch events</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-marpit-fragments="5">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-marpit-fragments="5">
 <h1>LiveState</h1>
 <ul>
 <li data-marpit-fragment="1"><code>new LiveState(url, channel)</code></li>
@@ -215,7 +228,7 @@
 </li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-marpit-fragments="6">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-marpit-fragments="6">
 <h2><code>connectElement(element, liveState, options)</code></h2>
 <ul>
 <li data-marpit-fragment="1">options:
@@ -232,17 +245,59 @@
 </li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24">
-<h1>Let's make a Todo Element!</h1>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-marpit-fragments="2">
-<h1>More demos</h1>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-marpit-fragments="7">
+<h2><code>@liveState</code> typescript decorator</h2>
 <ul>
-<li data-marpit-fragment="1"><a href="https://launchscout.github.io/test-livestate-comments/">Live comments</a></li>
-<li data-marpit-fragment="2">Live commerce</li>
+<li data-marpit-fragment="1">decorates a Custom Element class</li>
+<li data-marpit-fragment="2">takes a single <code>object</code> param
+<ul>
+<li data-marpit-fragment="3">properties - list of properties to set from state</li>
+<li data-marpit-fragment="4">attributes - list of attributes to set from state</li>
+<li data-marpit-fragment="5">events
+<ul>
+<li data-marpit-fragment="6">send - events to send from this element</li>
+<li data-marpit-fragment="7">receive - events to receive and then dispatch on this element</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-marpit-fragments="8">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27">
+<h1>Let's make a <s>Todo List</s></h1>
+<p>Dear god no lets do something else plz</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-marpit-fragments="5">
+<h1>Demo 2.0: Live support via discord</h1>
+<ul>
+<li data-marpit-fragment="1"><code>&lt;discord-chat&gt;</code> html element you can add to any web page</li>
+<li data-marpit-fragment="2">Users enter their name to start a &quot;chat with agent&quot;</li>
+<li data-marpit-fragment="3">Connects to a newly created discord channel</li>
+<li data-marpit-fragment="4">Messages are sent to discord from website user</li>
+<li data-marpit-fragment="5">Messages are received from the &quot;agent&quot; in the discord channel</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29">
+<h1>The players</h1>
+<h2><code>&lt;discord-chat&gt;</code></h2>
+<h2><code>DiscordElement.DiscordChatChannel</code></h2>
+<h2><code>DiscordElement.BotConsumer</code></h2>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30">
+<h1>Show some codez</h1>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31">
+<h1>Demo time!</h1>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-marpit-fragments="3">
+<h1>More demos</h1>
+<ul>
+<li data-marpit-fragment="1"></li>
+<li data-marpit-fragment="2"><a href="https://launchscout.github.io/test-livestate-comments/">Live comments</a></li>
+<li data-marpit-fragment="3">Live commerce</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-marpit-fragments="8">
 <h1>Future possible things</h1>
 <ul>
 <li data-marpit-fragment="1">Very soon:
@@ -261,7 +316,7 @@
 <li data-marpit-fragment="8">Connecting to FAAS</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-marpit-fragments="4">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-marpit-fragments="4">
 <h1>It's early times!</h1>
 <ul>
 <li data-marpit-fragment="1">APIs may still change</li>

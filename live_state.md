@@ -19,6 +19,7 @@ LaunchScout
   * Buy button
   * Comments
   * Surveys
+* You could also lump in Micro Front Ends
 
 ---
 
@@ -66,16 +67,15 @@ LaunchScout
 # Does this seem familiar?
 * `GenServer`
 * Redux
+* Elm
 * LiveView
 
 ---
 
-# Is there a name for this pattern?
-* Event/State Reducers?
-* Event Driven Thingamajig?
-* Action Oriented Stuff?
-* You know, the thing where you have functions that take event and current state and return a new state
+# Side rant: This pattern needs a name!!
 
+---
+# Let's call it: Event State Reducer
 ---
 
 # The new-ish idea
@@ -124,28 +124,36 @@ You might be surprised how little code there is...
 ---
 ## `init/3` to build initial state
   * Receives:
-    * 
+    * chanel
     * payload
-    * 
-  * `handle_event/3` to handle events
-    * 
-    * returns new state
-    * optionally returns events to be dispatched on the client side
-  * optional: `handle_message` for PubSub
+    * socket
+  * Returns
+    * state
+    * map of `Jason.Encoder` able things
+    * pushes `state:change` to clients
 
 ---
 
-# Let's make a ~~Todo List~~
-Dear god no lets do something else plz
+  ## `handle_event/3` to handle events
+  * Receives
+    * event name (`CustomEvent` name)
+    * event payload (`CustomEvent` detail)
+    * state (from socket assigns)
+  * Returns
+    `{:noreply, new_state}`
+    `{:reply, event_or_events, new_state}`
+  * new state is pushed to clients over channel
+  * Events dispatched on client
 
 ---
 
-# Let's make something actually interesting: a live support thing
-* A custom element that lets visitors chat with an agent
-* Our "agents" will be in discord
-* Make a new channel for each convo
-* Relay messages to and from Discord
-
+---
+# Sending the whole state every time?
+* `json_patch` new in 0.5.1
+* uses `json_diff` to calculate state patch
+* sends a `lvs:update` event containing a json patch
+* client applies patch to produce new state
+* opt in
 ---
 
 # Introducing `phx-live-state`
@@ -184,11 +192,48 @@ Dear god no lets do something else plz
 
 ---
 
-# Let's make a Todo Element!
+## `@liveState` typescript decorator
+* decorates a Custom Element class
+* takes a single `object` param
+  * properties - list of properties to set from state
+  * attributes - list of attributes to set from state
+  * events
+    * send - events to send from this element
+    * receive - events to receive and then dispatch on this element
+
+---
+
+# Let's make a ~~Todo List~~
+Dear god no lets do something else plz
+
+---
+
+# Demo 2.0: Live support via discord
+* `<discord-chat>` html element you can add to any web page
+* Users enter their name to start a "chat with agent"
+* Connects to a newly created discord channel
+* Messages are sent to discord from website user
+* Messages are received from the "agent" in the discord channel
+
+---
+
+# The players
+## `<discord-chat>`
+## `DiscordElement.DiscordChatChannel`
+## `DiscordElement.BotConsumer`
+
+---
+
+# Show some codez
+
+---
+
+# Demo time!
 
 ---
 
 # More demos
+* 
 * [Live comments](https://launchscout.github.io/test-livestate-comments/)
 * Live commerce
 
