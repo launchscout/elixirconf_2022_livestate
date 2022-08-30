@@ -1,17 +1,25 @@
 ---
 marp: true
+style: |
+  footer {
+    position: absolute;
+    height: 150px;
+    width: 150px;
+    right: 0;
+  }
 ---
 
 ![bg](./slide-welcome.jpg)
 
 ---
+
 ![bg right contain](./matched-edge.png)
 # Embedded Apps with LiveState
 ### Chris Nelson
-LaunchScout
+![h:200](full-color.png)
 
 ---
-
+<!-- footer: ![](full-color.png) -->
 # What's an Embedded Application?
 * Adds functionality to a larger application
 * Examples
