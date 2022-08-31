@@ -1,11 +1,32 @@
 ---
 marp: true
 style: |
+
+  section h1 {
+    color: #6042BC;
+  }
+
+  section code {
+    background-color: #e0e0ff;
+  }
+
   footer {
     position: absolute;
-    height: 150px;
-    width: 150px;
+    bottom: 0;
+    left: 0;
     right: 0;
+    height: 100px;
+  }
+
+  footer img {
+    position: absolute;
+    width: 120px;
+    right: 20px;
+    top: 0;
+
+  }
+  section #title-slide-logo {
+    margin-left: -60px;
   }
 ---
 
@@ -16,7 +37,7 @@ style: |
 ![bg right contain](./matched-edge.png)
 # Embedded Apps with LiveState
 ### Chris Nelson
-![h:200](full-color.png)
+![h:200](full-color.png#title-slide-logo)
 
 ---
 <!-- footer: ![](full-color.png) -->
@@ -126,42 +147,53 @@ You might be surprised how little code there is...
 
 * The elixir library
 * Add it to your deps
-* `use LiveState.Channel` behaviour in yo channel
+* `use LiveState.Channel` behaviour in your channel
 * implement callbacks
 
 ---
 ## `init/3` to build initial state
-  * Receives:
-    * chanel
-    * payload
-    * socket
-  * Returns
-    * state
-    * map of `Jason.Encoder` able things
-    * pushes `state:change` to clients
+* Receives:
+  * channel
+  * payload
+  * socket
+* Returns
+  * state
+  * map of `Jason.Encoder` able things
+  * pushes `state:change` to clients
 
 ---
 
-  ## `handle_event/3` to handle events
-  * Receives
-    * event name (`CustomEvent` name)
-    * event payload (`CustomEvent` detail)
-    * state (from socket assigns)
-  * Returns
-    `{:noreply, new_state}`
-    `{:reply, event_or_events, new_state}`
-  * new state is pushed to clients over channel
-  * Events dispatched on client
+## `handle_event/3` to handle events
+* Receives
+  * event name (`CustomEvent` name)
+  * event payload (`CustomEvent` detail)
+  * state (from socket assigns)
+* Returns
+  `{:noreply, new_state}`
+  `{:reply, event_or_events, new_state}`
+* new state is pushed to clients over channel
+* Events dispatched on client
 
 ---
 
+## `handle_message/3` to handle process messages
+* Receives
+  * message
+  * state
+* Return tuples same as `handle_event/3`
+* Handy for `PubSub`!
+
 ---
+
 # Sending the whole state every time?
 * `json_patch` new in 0.5.1
 * uses `json_diff` to calculate state patch
 * sends a `lvs:update` event containing a json patch
+* tracks a state version number to keep things in sync
+  * although Phoenix Channels may make this redundant
 * client applies patch to produce new state
 * opt in
+
 ---
 
 # Introducing `phx-live-state`
@@ -169,7 +201,7 @@ You might be surprised how little code there is...
 * increasing levels of abstraction:
   * `LiveState` - lower level API
   * `connectElement()` allows you to "wire up" a Custom Element
-  * `@liveState` TS decorator lets you declaratively annotate a Custom Element
+  * `@liveState` TS decorator lets you declaratively annotate a Custom Element class
 
 ---
 
@@ -181,33 +213,14 @@ You might be surprised how little code there is...
 
 ---
 
-# LiveState
-* `new LiveState(url, channel)`
-* `liveState.connect(params)` connects to socket and joins channel
-* `liveState.subscribe((state) => {})` pass a function which will be called with new state
-* `liveState.pushEvent(new CustomEvent('foo', {detail: ...})`) sends a custom event up to channel using detail as the payload 
-  * `handle_event` will be called on channel to compute new state
-
----
-
-##  `connectElement(element, liveState, options)`
-* options:
-  * properties - list of properties to set from state
-  * attributes - list of attributes to set from state
-  * events
-    * send - events to send from this element
-    * receive - events to receive and then dispatch on this element
-
----
-
 ## `@liveState` typescript decorator
 * decorates a Custom Element class
 * takes a single `object` param
   * properties - list of properties to set from state
   * attributes - list of attributes to set from state
   * events
-    * send - events to send from this element
-    * receive - events to receive and then dispatch on this element
+    * send - Custom Events to send from this element
+    * receive - Custom Events to receive and then dispatch on this element
 
 ---
 
@@ -219,7 +232,7 @@ Dear god no lets do something else plz
 # Demo 2.0: Live support via discord
 * `<discord-chat>` html element you can add to any web page
 * Users enter their name to start a "chat with agent"
-* Connects to a newly created discord channel
+* Creates and connects to a newly created discord channel
 * Messages are sent to discord from website user
 * Messages are received from the "agent" in the discord channel
 
@@ -228,11 +241,11 @@ Dear god no lets do something else plz
 # The players
 ## `<discord-chat>`
 ## `DiscordElement.DiscordChatChannel`
-## `DiscordElement.BotConsumer`
+## `DiscordElement.ChatBotConsumer`
 
 ---
 
-# Show some codez
+# Codez plz
 
 ---
 
@@ -241,15 +254,13 @@ Dear god no lets do something else plz
 ---
 
 # More demos
-* 
 * [Live comments](https://launchscout.github.io/test-livestate-comments/)
-* Live commerce
 
 ---
 
 # Future possible things
 * Very soon:
-  * jsonpatch for efficient state management
+  * ~~jsonpatch for efficient state management~~
   * authorization hook and example
 * Other clients
   * Swift/iOS
@@ -264,3 +275,10 @@ Dear god no lets do something else plz
 * It's great time to join us if you want to help them be better :)
 * If you are building an embedded or micro front end app, let's talk
   * chris@launchscout.com
+
+---
+ 
+![h:400px](https://cdn.discordapp.com/attachments/564951236311253042/1012446048599416903/qr-chris-elixirconf-22.png)
+### github.com/launchscout/elixirconf_2022_livestate
+
+---
