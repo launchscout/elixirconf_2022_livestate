@@ -987,7 +987,7 @@ section #title-slide-logo {
 <h2>It's the complexity of managing requests, responses, and distributed state</h2>
 <footer><img src="full-color.png" alt="" /></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-marpit-fragments="4" data-footer="![](full-color.png)" data-style="
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-marpit-fragments="7" data-footer="![](full-color.png)" data-style="
 section h1 {
   color: #6042BC;
 }
@@ -1045,9 +1045,15 @@ section #title-slide-logo {
 <h1>How it works on the Client</h1>
 <ul>
 <li data-marpit-fragment="1">Client library uses Phoenix Channels</li>
-<li data-marpit-fragment="2">Sends Custom Events over channel as <code>lvs:event_name</code></li>
-<li data-marpit-fragment="3">Receives <code>state:change</code> events to update local state</li>
-<li data-marpit-fragment="4">Can optionally receive other events from channel and dispatch them</li>
+<li data-marpit-fragment="2">Sends Custom Events over channel as <code>lvs:event_name</code>
+<ul>
+<li data-marpit-fragment="3">Custom Events are user defined DOM Events</li>
+<li data-marpit-fragment="4"><code>name</code> up to you</li>
+<li data-marpit-fragment="5"><code>detail</code> a payload of arbitrary data</li>
+</ul>
+</li>
+<li data-marpit-fragment="6">Receives <code>state:change</code> events to update local state</li>
+<li data-marpit-fragment="7">Can optionally receive other events from channel and dispatch them</li>
 </ul>
 <footer><img src="full-color.png" alt="" /></footer>
 </section>
@@ -1110,7 +1116,7 @@ section #title-slide-logo {
 <ul>
 <li data-marpit-fragment="1">Server use Phoenix Channels too :)</li>
 <li data-marpit-fragment="2">state is maintained in a socket assign</li>
-<li data-marpit-fragment="3">events are sent from client over the chanel</li>
+<li data-marpit-fragment="3">events are sent from client over the channel</li>
 <li data-marpit-fragment="4">state changes are pushed to client over the channel</li>
 <li data-marpit-fragment="5">A <code>LiveState.Channel</code> behaviour makes things easy</li>
 </ul>
@@ -1234,7 +1240,7 @@ section #title-slide-logo {
 <ul>
 <li data-marpit-fragment="1">The elixir library</li>
 <li data-marpit-fragment="2">Add it to your deps</li>
-<li data-marpit-fragment="3"><code>use LiveState.Channel</code> behaviour in yo channel</li>
+<li data-marpit-fragment="3"><code>use LiveState.Channel</code> behaviour in your channel</li>
 <li data-marpit-fragment="4">implement callbacks</li>
 </ul>
 <footer><img src="full-color.png" alt="" /></footer>
@@ -1298,15 +1304,15 @@ section #title-slide-logo {
 <ul>
 <li data-marpit-fragment="1">Receives:
 <ul>
-<li data-marpit-fragment="2">chanel</li>
+<li data-marpit-fragment="2">channel</li>
 <li data-marpit-fragment="3">payload</li>
 <li data-marpit-fragment="4">socket</li>
 </ul>
 </li>
 <li data-marpit-fragment="5">Returns
 <ul>
-<li data-marpit-fragment="6">state</li>
-<li data-marpit-fragment="7">map of <code>Jason.Encoder</code> able things</li>
+<li data-marpit-fragment="6"><code>{:ok, state}</code></li>
+<li data-marpit-fragment="7">state must be map of <code>Jason.Encoder</code> able things</li>
 <li data-marpit-fragment="8">pushes <code>state:change</code> to clients</li>
 </ul>
 </li>
@@ -1385,7 +1391,7 @@ section #title-slide-logo {
 </ul>
 <footer><img src="full-color.png" alt="" /></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-footer="![](full-color.png)" data-style="
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-marpit-fragments="5" data-footer="![](full-color.png)" data-style="
 section h1 {
   color: #6042BC;
 }
@@ -1440,9 +1446,20 @@ section #title-slide-logo {
   margin-left: -60px;
 }
 ;">
+<h2><code>handle_message/3</code> to handle process messages</h2>
+<ul>
+<li data-marpit-fragment="1">Receives
+<ul>
+<li data-marpit-fragment="2">message</li>
+<li data-marpit-fragment="3">state</li>
+</ul>
+</li>
+<li data-marpit-fragment="4">Return tuples same as <code>handle_event/3</code></li>
+<li data-marpit-fragment="5">Handy for <code>PubSub</code>!</li>
+</ul>
 <footer><img src="full-color.png" alt="" /></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-marpit-fragments="5" data-footer="![](full-color.png)" data-style="
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-marpit-fragments="7" data-footer="![](full-color.png)" data-style="
 section h1 {
   color: #6042BC;
 }
@@ -1503,7 +1520,12 @@ section #title-slide-logo {
 <li data-marpit-fragment="2">uses <code>json_diff</code> to calculate state patch</li>
 <li data-marpit-fragment="3">sends a <code>lvs:update</code> event containing a json patch</li>
 <li data-marpit-fragment="4">client applies patch to produce new state</li>
-<li data-marpit-fragment="5">opt in</li>
+<li data-marpit-fragment="5">tracks a state version number to keep things in sync
+<ul>
+<li data-marpit-fragment="6">although Phoenix Channels may make this redundant</li>
+</ul>
+</li>
+<li data-marpit-fragment="7">opt in</li>
 </ul>
 <footer><img src="full-color.png" alt="" /></footer>
 </section>
@@ -1634,152 +1656,12 @@ section #title-slide-logo {
 <h2>Your TS/JS should only have to:</h2>
 <ul>
 <li data-marpit-fragment="1">declaratively connect to LiveState</li>
-<li data-marpit-fragment="2">render UI</li>
+<li data-marpit-fragment="2">render the current state</li>
 <li data-marpit-fragment="3">dispatch events</li>
 </ul>
 <footer><img src="full-color.png" alt="" /></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-marpit-fragments="5" data-footer="![](full-color.png)" data-style="
-section h1 {
-  color: #6042BC;
-}
-
-section code {
-  background-color: #e0e0ff;
-}
-
-footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100px;
-}
-
-footer img {
-  position: absolute;
-  width: 120px;
-  right: 20px;
-  top: 0;
-
-}
-section #title-slide-logo {
-  margin-left: -60px;
-}
-" style="--footer:![](full-color.png);--style:
-section h1 {
-  color: #6042BC;
-}
-
-section code {
-  background-color: #e0e0ff;
-}
-
-footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100px;
-}
-
-footer img {
-  position: absolute;
-  width: 120px;
-  right: 20px;
-  top: 0;
-
-}
-section #title-slide-logo {
-  margin-left: -60px;
-}
-;">
-<h1>LiveState</h1>
-<ul>
-<li data-marpit-fragment="1"><code>new LiveState(url, channel)</code></li>
-<li data-marpit-fragment="2"><code>liveState.connect(params)</code> connects to socket and joins channel</li>
-<li data-marpit-fragment="3"><code>liveState.subscribe((state) =&gt; {})</code> pass a function which will be called with new state</li>
-<li data-marpit-fragment="4"><code>liveState.pushEvent(new CustomEvent('foo', {detail: ...})</code>) sends a custom event up to channel using detail as the payload
-<ul>
-<li data-marpit-fragment="5"><code>handle_event</code> will be called on channel to compute new state</li>
-</ul>
-</li>
-</ul>
-<footer><img src="full-color.png" alt="" /></footer>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-marpit-fragments="6" data-footer="![](full-color.png)" data-style="
-section h1 {
-  color: #6042BC;
-}
-
-section code {
-  background-color: #e0e0ff;
-}
-
-footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100px;
-}
-
-footer img {
-  position: absolute;
-  width: 120px;
-  right: 20px;
-  top: 0;
-
-}
-section #title-slide-logo {
-  margin-left: -60px;
-}
-" style="--footer:![](full-color.png);--style:
-section h1 {
-  color: #6042BC;
-}
-
-section code {
-  background-color: #e0e0ff;
-}
-
-footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100px;
-}
-
-footer img {
-  position: absolute;
-  width: 120px;
-  right: 20px;
-  top: 0;
-
-}
-section #title-slide-logo {
-  margin-left: -60px;
-}
-;">
-<h2><code>connectElement(element, liveState, options)</code></h2>
-<ul>
-<li data-marpit-fragment="1">options:
-<ul>
-<li data-marpit-fragment="2">properties - list of properties to set from state</li>
-<li data-marpit-fragment="3">attributes - list of attributes to set from state</li>
-<li data-marpit-fragment="4">events
-<ul>
-<li data-marpit-fragment="5">send - events to send from this element</li>
-<li data-marpit-fragment="6">receive - events to receive and then dispatch on this element</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<footer><img src="full-color.png" alt="" /></footer>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-marpit-fragments="7" data-footer="![](full-color.png)" data-style="
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-marpit-fragments="9" data-footer="![](full-color.png)" data-style="
 section h1 {
   color: #6042BC;
 }
@@ -1839,12 +1721,14 @@ section #title-slide-logo {
 <li data-marpit-fragment="1">decorates a Custom Element class</li>
 <li data-marpit-fragment="2">takes a single <code>object</code> param
 <ul>
-<li data-marpit-fragment="3">properties - list of properties to set from state</li>
-<li data-marpit-fragment="4">attributes - list of attributes to set from state</li>
-<li data-marpit-fragment="5">events
+<li data-marpit-fragment="3">url: (optional, defaults to <code>url</code> prop of element)</li>
+<li data-marpit-fragment="4">channelName: (optional, defaults to <code>channelName</code> prop on element)</li>
+<li data-marpit-fragment="5">properties - list of properties to set from state</li>
+<li data-marpit-fragment="6">attributes - list of attributes to set from state</li>
+<li data-marpit-fragment="7">events
 <ul>
-<li data-marpit-fragment="6">send - events to send from this element</li>
-<li data-marpit-fragment="7">receive - events to receive and then dispatch on this element</li>
+<li data-marpit-fragment="8">send - Custom Events to send from this element</li>
+<li data-marpit-fragment="9">receive - Custom Events to receive and then dispatch on this element</li>
 </ul>
 </li>
 </ul>
@@ -1852,7 +1736,7 @@ section #title-slide-logo {
 </ul>
 <footer><img src="full-color.png" alt="" /></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-footer="![](full-color.png)" data-style="
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-footer="![](full-color.png)" data-style="
 section h1 {
   color: #6042BC;
 }
@@ -1911,7 +1795,7 @@ section #title-slide-logo {
 <p>Dear god no lets do something else plz</p>
 <footer><img src="full-color.png" alt="" /></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-marpit-fragments="5" data-footer="![](full-color.png)" data-style="
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-marpit-fragments="5" data-footer="![](full-color.png)" data-style="
 section h1 {
   color: #6042BC;
 }
@@ -1970,13 +1854,13 @@ section #title-slide-logo {
 <ul>
 <li data-marpit-fragment="1"><code>&lt;discord-chat&gt;</code> html element you can add to any web page</li>
 <li data-marpit-fragment="2">Users enter their name to start a &quot;chat with agent&quot;</li>
-<li data-marpit-fragment="3">Connects to a newly created discord channel</li>
+<li data-marpit-fragment="3">Creates and connects to a newly created discord channel</li>
 <li data-marpit-fragment="4">Messages are sent to discord from website user</li>
 <li data-marpit-fragment="5">Messages are received from the &quot;agent&quot; in the discord channel</li>
 </ul>
 <footer><img src="full-color.png" alt="" /></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-footer="![](full-color.png)" data-style="
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-footer="![](full-color.png)" data-style="
 section h1 {
   color: #6042BC;
 }
@@ -2037,7 +1921,65 @@ section #title-slide-logo {
 <h2><code>DiscordElement.ChatBotConsumer</code></h2>
 <footer><img src="full-color.png" alt="" /></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-footer="![](full-color.png)" data-style="
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-footer="![](full-color.png)" data-style="
+section h1 {
+  color: #6042BC;
+}
+
+section code {
+  background-color: #e0e0ff;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+}
+
+footer img {
+  position: absolute;
+  width: 120px;
+  right: 20px;
+  top: 0;
+
+}
+section #title-slide-logo {
+  margin-left: -60px;
+}
+" style="--footer:![](full-color.png);--style:
+section h1 {
+  color: #6042BC;
+}
+
+section code {
+  background-color: #e0e0ff;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+}
+
+footer img {
+  position: absolute;
+  width: 120px;
+  right: 20px;
+  top: 0;
+
+}
+section #title-slide-logo {
+  margin-left: -60px;
+}
+;">
+<h1>Codez plz</h1>
+<footer><img src="full-color.png" alt="" /></footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-footer="![](full-color.png)" data-style="
 section h1 {
   color: #6042BC;
 }
@@ -2095,70 +2037,7 @@ section #title-slide-logo {
 <h1>Demo time!</h1>
 <footer><img src="full-color.png" alt="" /></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-marpit-fragments="3" data-footer="![](full-color.png)" data-style="
-section h1 {
-  color: #6042BC;
-}
-
-section code {
-  background-color: #e0e0ff;
-}
-
-footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100px;
-}
-
-footer img {
-  position: absolute;
-  width: 120px;
-  right: 20px;
-  top: 0;
-
-}
-section #title-slide-logo {
-  margin-left: -60px;
-}
-" style="--footer:![](full-color.png);--style:
-section h1 {
-  color: #6042BC;
-}
-
-section code {
-  background-color: #e0e0ff;
-}
-
-footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100px;
-}
-
-footer img {
-  position: absolute;
-  width: 120px;
-  right: 20px;
-  top: 0;
-
-}
-section #title-slide-logo {
-  margin-left: -60px;
-}
-;">
-<h1>More demos</h1>
-<ul>
-<li data-marpit-fragment="1"></li>
-<li data-marpit-fragment="2"><a href="https://launchscout.github.io/test-livestate-comments/">Live comments</a></li>
-<li data-marpit-fragment="3">Live commerce</li>
-</ul>
-<footer><img src="full-color.png" alt="" /></footer>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-marpit-fragments="8" data-footer="![](full-color.png)" data-style="
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-marpit-fragments="8" data-footer="![](full-color.png)" data-style="
 section h1 {
   color: #6042BC;
 }
@@ -2217,7 +2096,7 @@ section #title-slide-logo {
 <ul>
 <li data-marpit-fragment="1">Very soon:
 <ul>
-<li data-marpit-fragment="2">jsonpatch for efficient state management</li>
+<li data-marpit-fragment="2"><s>jsonpatch for efficient state management</s></li>
 <li data-marpit-fragment="3">authorization hook and example</li>
 </ul>
 </li>
@@ -2232,7 +2111,7 @@ section #title-slide-logo {
 </ul>
 <footer><img src="full-color.png" alt="" /></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-marpit-fragments="4" data-footer="![](full-color.png)" data-style="
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-marpit-fragments="4" data-footer="![](full-color.png)" data-style="
 section h1 {
   color: #6042BC;
 }
@@ -2299,7 +2178,72 @@ section #title-slide-logo {
 </ul>
 <footer><img src="full-color.png" alt="" /></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-footer="![](full-color.png)" data-style="
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-marpit-fragments="5" data-footer="![](full-color.png)" data-style="
+section h1 {
+  color: #6042BC;
+}
+
+section code {
+  background-color: #e0e0ff;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+}
+
+footer img {
+  position: absolute;
+  width: 120px;
+  right: 20px;
+  top: 0;
+
+}
+section #title-slide-logo {
+  margin-left: -60px;
+}
+" style="--footer:![](full-color.png);--style:
+section h1 {
+  color: #6042BC;
+}
+
+section code {
+  background-color: #e0e0ff;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+}
+
+footer img {
+  position: absolute;
+  width: 120px;
+  right: 20px;
+  top: 0;
+
+}
+section #title-slide-logo {
+  margin-left: -60px;
+}
+;">
+<h1>Links:</h1>
+<ul>
+<li data-marpit-fragment="1">live_state elixir library: <a href="https://github.com/launchscout/live_state">https://github.com/launchscout/live_state</a></li>
+<li data-marpit-fragment="2">phx-live-state client npm: <a href="https://github.com/launchscout/live-state">https://github.com/launchscout/live-state</a></li>
+<li data-marpit-fragment="3">discord-element front end: <a href="https://github.com/launchscout/discord-element">https://github.com/launchscout/discord-element</a></li>
+<li data-marpit-fragment="4">discord-element back end: <a href="https://github.com/launchscout/discord_element">https://github.com/launchscout/discord_element</a></li>
+<li data-marpit-fragment="5"><a href="https://launchscout.github.io/test-livestate-comments/">Live comments demo</a></li>
+</ul>
+<footer><img src="full-color.png" alt="" /></footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-footer="![](full-color.png)" data-style="
 section h1 {
   color: #6042BC;
 }
@@ -2358,7 +2302,7 @@ section #title-slide-logo {
 <h3>github.com/launchscout/elixirconf_2022_livestate</h3>
 <footer><img src="full-color.png" alt="" /></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-footer="![](full-color.png)" data-style="
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-footer="![](full-color.png)" data-style="
 section h1 {
   color: #6042BC;
 }

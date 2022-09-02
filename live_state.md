@@ -124,6 +124,9 @@ style: |
 # How it works on the Client
 * Client library uses Phoenix Channels
 * Sends Custom Events over channel as `lvs:event_name`
+  * Custom Events are user defined DOM Events
+  * `name` up to you
+  * `detail` a payload of arbitrary data
 * Receives `state:change` events to update local state
 * Can optionally receive other events from channel and dispatch them
 
@@ -132,7 +135,7 @@ style: |
 # How it works on the server
 * Server use Phoenix Channels too :)
 * state is maintained in a socket assign
-* events are sent from client over the chanel
+* events are sent from client over the channel
 * state changes are pushed to client over the channel
 * A `LiveState.Channel` behaviour makes things easy
 
@@ -157,8 +160,8 @@ You might be surprised how little code there is...
   * payload
   * socket
 * Returns
-  * state
-  * map of `Jason.Encoder` able things
+  * `{:ok, state}`
+  * state must be map of `Jason.Encoder` able things
   * pushes `state:change` to clients
 
 ---
@@ -189,9 +192,9 @@ You might be surprised how little code there is...
 * `json_patch` new in 0.5.1
 * uses `json_diff` to calculate state patch
 * sends a `lvs:update` event containing a json patch
+* client applies patch to produce new state
 * tracks a state version number to keep things in sync
   * although Phoenix Channels may make this redundant
-* client applies patch to produce new state
 * opt in
 
 ---
@@ -208,7 +211,7 @@ You might be surprised how little code there is...
 # The goal:
 ## Your TS/JS should only have to:
 * declaratively connect to LiveState
-* render UI
+* render the current state
 * dispatch events
 
 ---
@@ -216,6 +219,8 @@ You might be surprised how little code there is...
 ## `@liveState` typescript decorator
 * decorates a Custom Element class
 * takes a single `object` param
+  * url: (optional, defaults to `url` prop of element)
+  * channelName: (optional, defaults to `channelName` prop on element)
   * properties - list of properties to set from state
   * attributes - list of attributes to set from state
   * events
@@ -253,11 +258,6 @@ Dear god no lets do something else plz
 
 ---
 
-# More demos
-* [Live comments](https://launchscout.github.io/test-livestate-comments/)
-
----
-
 # Future possible things
 * Very soon:
   * ~~jsonpatch for efficient state management~~
@@ -275,6 +275,15 @@ Dear god no lets do something else plz
 * It's great time to join us if you want to help them be better :)
 * If you are building an embedded or micro front end app, let's talk
   * chris@launchscout.com
+
+---
+
+# Links:
+* live_state elixir library: https://github.com/launchscout/live_state
+* phx-live-state client npm: https://github.com/launchscout/live-state
+* discord-element front end: https://github.com/launchscout/discord-element
+* discord-element back end: https://github.com/launchscout/discord_element
+* [Live comments demo](https://launchscout.github.io/test-livestate-comments/)
 
 ---
  
