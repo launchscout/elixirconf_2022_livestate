@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "marp live_state.md"
+    "start": "npm run watch & live-server .",
+    "watch": "marp --watch index.md -o index.html",
+    "build": "marp index.md -o index.html"
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +19,7 @@
   "homepage": "https://github.com/launchscout/elixirconf_2022_livestate#readme",
   "description": "",
   "devDependencies": {
-    "@marp-team/marp-cli": "^2.0.4"
+    "@marp-team/marp-cli": "^3.1.0",
+    "live-server": "^1.2.2"
   }
 }

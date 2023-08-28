@@ -1,7 +1,6 @@
-## ElixirConf 2022
+## ElixirConf 2023
 
-This is the deck for my ElixirConf talk. I've checked in both the markdown source and the 
-html output. This was probably a little silly, as the html is generated and shouldn't be edited directly. I use marp to generate the HTML.
+This is the deck for my 2023 ElixirConf talk. It uses examples from a different repo
 
 ## Usage
 
@@ -9,8 +8,8 @@ html output. This was probably a little silly, as the html is generated and shou
 npm install
 ```
 
-## Building the HTML
+## Building and serving
 
 ```
-npm run build
+npm start
 ```
